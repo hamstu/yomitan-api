@@ -4,16 +4,12 @@ import http.server
 import urllib
 import sys
 import json
-import asyncio
-import threading
 import struct
 
 ADDR = "localhost"
 PORT = 8766
 
 BLACKLISTED_PATHS = ["favicon.ico"]
-
-COMMAND = None
 
 def get_message():
     raw_length = sys.stdin.buffer.read(4)
@@ -41,12 +37,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             return
 
-        api_request = {
-            "path": path,
-            "params": params,
-        }
-
-        send_message({'action': 'none', 'params': {}, 'sequence': 1})
+        send_message({'action': path, 'params': params, 'sequence': 1})
 
         yomitan_response = get_message()
 
