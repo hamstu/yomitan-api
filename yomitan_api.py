@@ -6,7 +6,7 @@ import sys
 import json
 import struct
 
-ADDR = "localhost"
+ADDR = "127.0.0.1"
 PORT = 8766
 
 BLACKLISTED_PATHS = ["favicon.ico"]
