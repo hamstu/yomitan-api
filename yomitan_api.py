@@ -5,11 +5,33 @@ import urllib
 import sys
 import json
 import struct
+import os
+import signal
+import time
 
 ADDR = "127.0.0.1"
 PORT = 8766
+PROCESS_SHUTDOWN_TIME = 5
 
 BLACKLISTED_PATHS = ["favicon.ico"]
+
+lockfile_path = os.path.realpath(os.path.dirname(__file__)) + "/.lock"
+
+def ensure_single_instance():
+    try:
+        with open(lockfile_path, "r") as lockfile:
+            os.kill(int(lockfile.read()), signal.SIGTERM)
+            time.sleep(PROCESS_SHUTDOWN_TIME)
+    except FileNotFoundError:
+        pass
+    except ProcessLookupError as e:
+        print("Warning: Failed to process lockfile: " + str(e))
+
+    with open(lockfile_path, "w") as lockfile:
+        lockfile.write(str(os.getpid()))
+
+def delete_lockfile():
+    os.remove(lockfile_path)
 
 def get_message():
     raw_length = sys.stdin.buffer.read(4)
@@ -50,5 +72,11 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(bytes(json.dumps(yomitan_response), "utf-8"))
 
+ensure_single_instance()
 httpd = http.server.HTTPServer((ADDR, PORT), RequestHandler)
-httpd.serve_forever()
+try:
+    httpd.serve_forever()
+except KeyboardInterrupt:
+    pass
+
+delete_lockfile()
