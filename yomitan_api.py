@@ -18,7 +18,7 @@ PROCESS_STARTUP_WAIT = 5
 BLACKLISTED_PATHS = ["favicon.ico"]
 
 script_path = os.path.realpath(os.path.dirname(__file__))
-lockfile_path = script_path + "/.crowbar"
+crowbarfile_path = script_path + "/.crowbar"
 
 def error_log(message: str, error: str = "") -> None:
     try:
@@ -32,19 +32,19 @@ def error_log(message: str, error: str = "") -> None:
 def ensure_single_instance():
     wait_time = 0
     try:
-        with open(lockfile_path, "r") as lockfile:
-            os.kill(int(lockfile.read()), signal.SIGTERM)
+        with open(crowbarfile_path, "r") as crowbarfile:
+            os.kill(int(crowbarfile.read()), signal.SIGTERM)
             wait_time = PROCESS_STARTUP_WAIT
     except Exception:
         error_log(traceback.format_exc())
 
-    with open(lockfile_path, "w") as lockfile:
-        lockfile.write(str(os.getpid()))
+    with open(crowbarfile_path, "w") as crowbarfile:
+        crowbarfile.write(str(os.getpid()))
 
     time.sleep(wait_time)
 
-def delete_lockfile():
-    os.remove(lockfile_path)
+def delete_crowbarfile():
+    os.remove(crowbarfile_path)
 
 def get_message():
     raw_length = sys.stdin.buffer.read(4)
@@ -91,6 +91,6 @@ try:
     ensure_single_instance()
     httpd = http.server.HTTPServer((ADDR, PORT), RequestHandler)
     httpd.serve_forever()
-    delete_lockfile()
+    delete_crowbarfile()
 except Exception:
     error_log(traceback.format_exc())
