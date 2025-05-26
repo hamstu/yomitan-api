@@ -31,6 +31,7 @@ def ankiFields_term():
         "text": "わかる",
         "type": "term",
         "markers": ["audio", "cloze-body-kana", "conjugation", "expression", "furigana", "furigana-plain", "glossary", "glossary-brief", "glossary-no-dictionary", "glossary-first", "glossary-first-brief", "glossary-first-no-dictionary", "part-of-speech", "phonetic-transcriptions", "pitch-accents", "pitch-accent-graphs", "pitch-accent-graphs-jj", "pitch-accent-positions", "pitch-accent-categories", "reading", "tags", "clipboard-image", "clipboard-text", "cloze-body", "cloze-prefix", "cloze-suffix", "dictionary", "dictionary-alias", "document-title", "frequencies", "frequency-harmonic-rank", "frequency-harmonic-occurrence", "frequency-average-rank", "frequency-average-occurrence", "screenshot", "search-query", "popup-selection-text", "sentence", "sentence-furigana", "sentence-furigana-plain", "url"],
+        "maxEntries": 1,
     }
     response = requests.post(request_url + "/ankiFields", json = params)
     print(response)
@@ -42,6 +43,7 @@ def ankiFields_kanji():
         "text": "分",
         "type": "kanji",
         "markers": ["character", "glossary", "kunyomi", "onyomi", "onyomi-hiragana", "stroke-count", "clipboard-image", "clipboard-text", "cloze-body", "cloze-prefix", "cloze-suffix", "dictionary", "dictionary-alias", "document-title", "frequencies", "frequency-harmonic-rank", "frequency-harmonic-occurrence", "frequency-average-rank", "frequency-average-occurrence", "screenshot", "search-query", "popup-selection-text", "sentence", "sentence-furigana", "sentence-furigana-plain", "url"],
+        "maxEntries": 1,
     }
     response = requests.post(request_url + "/ankiFields", json = params)
     print(response)
