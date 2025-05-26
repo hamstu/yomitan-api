@@ -11,7 +11,6 @@ def termEntries():
     print("Requesting termEntries:")
     params = {
         "term": "わかる",
-        "profileIndex": 0
     }
     response = requests.post(request_url + "/termEntries", json = params)
     print(response)
@@ -21,7 +20,6 @@ def kanjiEntries():
     print("Requesting kanjiEntries:")
     params = {
         "character": "分",
-        "profileIndex": 0
     }
     response = requests.post(request_url + "/kanjiEntries", json = params)
     print(response)
