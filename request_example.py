@@ -1,4 +1,5 @@
 import requests
+import json
 
 request_url = "http://127.0.0.1:8766"
 
@@ -14,7 +15,7 @@ def termEntries():
     }
     response = requests.post(request_url + "/termEntries", json = params)
     print(response)
-    print(elide(str(response.json()["data"])))
+    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
 
 def kanjiEntries():
     print("Requesting kanjiEntries:")
@@ -23,7 +24,7 @@ def kanjiEntries():
     }
     response = requests.post(request_url + "/kanjiEntries", json = params)
     print(response)
-    print(elide(str(response.json()["data"])))
+    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
 
 def ankiFields_term():
     print("Requesting ankiFields type term:")
@@ -35,7 +36,7 @@ def ankiFields_term():
     }
     response = requests.post(request_url + "/ankiFields", json = params)
     print(response)
-    print(elide(str(response.json()["data"])))
+    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
 
 def ankiFields_kanji():
     print("Requesting ankiFields type kanji:")
@@ -47,7 +48,7 @@ def ankiFields_kanji():
     }
     response = requests.post(request_url + "/ankiFields", json = params)
     print(response)
-    print(elide(str(response.json()["data"])))
+    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
 
 print("Yomitan API request example demo")
 print("Only the first 100 characters of the result data for each request will be printed")
