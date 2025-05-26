@@ -78,7 +78,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
 
         yomitan_response = get_message()
 
-        self.send_response(200)
+        self.send_response(yomitan_response["responseStatusCode"])
         self.send_header("Content-type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "*")
