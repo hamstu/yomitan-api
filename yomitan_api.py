@@ -13,7 +13,7 @@ import datetime
 
 ADDR = "127.0.0.1"
 PORT = 8766
-PROCESS_SHUTDOWN_TIME = 5
+PROCESS_STARTUP_WAIT = 5
 
 BLACKLISTED_PATHS = ["favicon.ico"]
 
@@ -32,12 +32,13 @@ def ensure_single_instance():
     try:
         with open(lockfile_path, "r") as lockfile:
             os.kill(int(lockfile.read()), signal.SIGTERM)
-            time.sleep(PROCESS_SHUTDOWN_TIME)
     except Exception:
         error_log(traceback.format_exc())
 
     with open(lockfile_path, "w") as lockfile:
         lockfile.write(str(os.getpid()))
+
+    time.sleep(PROCESS_STARTUP_WAIT)
 
 def delete_lockfile():
     os.remove(lockfile_path)
