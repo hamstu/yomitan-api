@@ -30,7 +30,7 @@ def ankiFields():
     params = {
         "text": "わかる",
         "type": "term",
-        "handlebars": ["expression", "glossary"],
+        "markers": ["expression", "glossary"],
     }
     response = requests.post(request_url + "/ankiFields", json = params)
     print(response)
