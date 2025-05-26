@@ -62,17 +62,19 @@ def send_message(message_content):
     sys.stdout.buffer.flush()
 
 class RequestHandler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
+    def do_POST(self):
         parsed_url = urllib.parse.urlparse(self.path)
         path = parsed_url.path[1:]
         params = urllib.parse.parse_qs(parsed_url.query)
+        content_length = int(self.headers['Content-Length'])
+        body = self.rfile.read(content_length).decode('utf-8')
 
         if path in BLACKLISTED_PATHS:
             self.send_response(400)
             self.end_headers()
             return
 
-        send_message({'action': path, 'params': params})
+        send_message({'action': path, 'params': params, 'body': body})
 
         yomitan_response = get_message()
 
