@@ -25,7 +25,8 @@ def error_log(message: str, error: str = "") -> None:
         utc_time = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d_%H-%M-%S")
         with open(script_path + "/error.log", "a", encoding = "utf8") as log_file:
             log_file.write(utc_time + ", " + str(message).replace("\r", r"\r").replace("\n", r"\n") + ", " + str(error).replace("\r", r"\r").replace("\n", r"\n") + "\n")
-    except Exception as e:
+    except Exception:
+        # This exception cannot be "last resort" printed due to stdout being used for nativemessaging
         pass
 
 def ensure_single_instance():
