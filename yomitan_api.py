@@ -18,7 +18,7 @@ PROCESS_STARTUP_WAIT = 5
 BLACKLISTED_PATHS = ["favicon.ico"]
 
 script_path = os.path.realpath(os.path.dirname(__file__))
-lockfile_path = script_path + "/.lock"
+lockfile_path = script_path + "/.crowbar"
 
 def error_log(message: str, error: str = "") -> None:
     try:
