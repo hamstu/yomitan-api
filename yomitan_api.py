@@ -30,16 +30,18 @@ def error_log(message: str, error: str = "") -> None:
         pass
 
 def ensure_single_instance():
+    wait_time = 0
     try:
         with open(lockfile_path, "r") as lockfile:
             os.kill(int(lockfile.read()), signal.SIGTERM)
+            wait_time = PROCESS_STARTUP_WAIT
     except Exception:
         error_log(traceback.format_exc())
 
     with open(lockfile_path, "w") as lockfile:
         lockfile.write(str(os.getpid()))
 
-    time.sleep(PROCESS_STARTUP_WAIT)
+    time.sleep(wait_time)
 
 def delete_lockfile():
     os.remove(lockfile_path)
