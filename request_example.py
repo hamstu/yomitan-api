@@ -25,8 +25,20 @@ def kanjiEntries():
     print(response)
     print(elide(str(response.json()["data"])))
 
+def ankiFields():
+    print("Requesting ankiFields:")
+    params = {
+        "text": "わかる",
+        "type": "term",
+        "handlebar": "glossary",
+    }
+    response = requests.post(request_url + "/ankiFields", json = params)
+    print(response)
+    print(elide(str(response.json()["data"])))
+
 print("Yomitan API request example demo")
 print("Only the first 100 characters of the result data for each request will be printed")
 print("--------------------------------------------------")
 termEntries()
 kanjiEntries()
+ankiFields()
