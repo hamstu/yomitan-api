@@ -70,7 +70,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             return
 
-        send_message({'action': path, 'params': params, 'sequence': 1})
+        send_message({'action': path, 'params': params})
 
         yomitan_response = get_message()
 
