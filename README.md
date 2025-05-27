@@ -67,3 +67,7 @@ If you are a Firefox user and/or have built Yomitan from source, you need to obt
 - [/kanjiEntries](./docs/api_paths/kanjiEntries.md)
 
 - [/ankiFields](./docs/api_paths/ankiFields.md)
+
+## Examples
+
+[Yomitan API Request Example Python](./request_example.py)
