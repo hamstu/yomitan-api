@@ -15,6 +15,7 @@ ADDR = "127.0.0.1"
 PORT = 8766
 PROCESS_STARTUP_WAIT = 5
 
+YOMITAN_API_NATIVE_MESSAGING_VERSION = 1
 BLACKLISTED_PATHS = ["favicon.ico"]
 
 script_path = os.path.realpath(os.path.dirname(__file__))
@@ -61,6 +62,16 @@ def send_message(message_content: dict) -> None:
     sys.stdout.buffer.write(encoded_content)
     sys.stdout.buffer.flush()
 
+def send_response(request_handler, status_code: int, content_type: str, data: str) -> None:
+    request_handler.send_response(status_code)
+    request_handler.send_header("Content-type", content_type)
+    request_handler.send_header("Access-Control-Allow-Origin", "*")
+    request_handler.send_header("Access-Control-Allow-Methods", "*")
+    request_handler.send_header("Access-Control-Allow-Headers", "*")
+    request_handler.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
+    request_handler.end_headers()
+    request_handler.wfile.write(bytes(data, "utf-8"))
+
 class RequestHandler(http.server.BaseHTTPRequestHandler):
     def do_POST(self) -> None:  # noqa: N802
         parsed_url = urllib.parse.urlparse(self.path)
@@ -70,22 +81,17 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
         body = self.rfile.read(content_length).decode("utf-8")
 
         if path in BLACKLISTED_PATHS:
-            self.send_response(400)
-            self.end_headers()
+            send_response(self, 400, "", "")
+            return
+
+        if path in ["remoteVersion", ""]:
+            send_response(self, 200, "application/json", json.dumps({"version": YOMITAN_API_NATIVE_MESSAGING_VERSION}))
             return
 
         send_message({"action": path, "params": params, "body": body})
-
         yomitan_response = get_message()
 
-        self.send_response(yomitan_response["responseStatusCode"])
-        self.send_header("Content-type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "*")
-        self.send_header("Access-Control-Allow-Headers", "*")
-        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
-        self.end_headers()
-        self.wfile.write(bytes(json.dumps(yomitan_response), "utf-8"))
+        send_response(self, yomitan_response["responseStatusCode"], "application/json", json.dumps(yomitan_response))
 
 try:
     ensure_single_instance()
