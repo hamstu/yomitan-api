@@ -1,5 +1,3 @@
-import json
-
 import requests
 
 request_url = "http://127.0.0.1:8766"
