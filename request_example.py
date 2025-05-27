@@ -11,6 +11,12 @@ def elide(text: str) -> str:
         return text[:100] + "..."
     return text
 
+def yomitan_version() -> None:
+    print("Requesting yomitanVersion:")
+    response = requests.post(request_url + "/yomitanVersion", timeout = request_timeout)
+    print(response)
+    print(json.dumps(response.json()["data"]))
+
 def term_entries() -> None:
     print("Requesting termEntries:")
     params = {
@@ -56,6 +62,7 @@ def anki_fields_kanji() -> None:
 print("Yomitan API request example demo")
 print("Only the first 100 characters of the result data for each request will be printed")
 print("--------------------------------------------------")
+yomitan_version()
 term_entries()
 kanji_entries()
 anki_fields_term()
