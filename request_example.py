@@ -15,7 +15,7 @@ def yomitan_version() -> None:
     print("Requesting yomitanVersion:")
     response = requests.post(request_url + "/yomitanVersion", timeout = request_timeout)
     print(response)
-    print(json.dumps(response.json()["data"]))
+    print(json.dumps(response.json()))
 
 def term_entries() -> None:
     print("Requesting termEntries:")
@@ -24,7 +24,7 @@ def term_entries() -> None:
     }
     response = requests.post(request_url + "/termEntries", json = params, timeout = request_timeout)
     print(response)
-    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
+    print(elide(json.dumps(response.json(), ensure_ascii = False)))
 
 def kanji_entries() -> None:
     print("Requesting kanjiEntries:")
@@ -33,7 +33,7 @@ def kanji_entries() -> None:
     }
     response = requests.post(request_url + "/kanjiEntries", json = params, timeout = request_timeout)
     print(response)
-    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
+    print(elide(json.dumps(response.json(), ensure_ascii = False)))
 
 def anki_fields_term() -> None:
     print("Requesting ankiFields type term:")
@@ -45,7 +45,7 @@ def anki_fields_term() -> None:
     }
     response = requests.post(request_url + "/ankiFields", json = params, timeout = request_timeout)
     print(response)
-    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
+    print(elide(json.dumps(response.json(), ensure_ascii = False)))
 
 def anki_fields_kanji() -> None:
     print("Requesting ankiFields type kanji:")
@@ -57,7 +57,7 @@ def anki_fields_kanji() -> None:
     }
     response = requests.post(request_url + "/ankiFields", json = params, timeout = request_timeout)
     print(response)
-    print(elide(json.dumps(response.json()["data"], ensure_ascii = False)))
+    print(elide(json.dumps(response.json(), ensure_ascii = False)))
 
 print("Yomitan API request example demo")
 print("Only the first 100 characters of the result data for each request will be printed")

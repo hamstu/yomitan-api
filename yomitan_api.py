@@ -91,7 +91,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
         send_message({"action": path, "params": params, "body": body})
         yomitan_response = get_message()
 
-        send_response(self, yomitan_response["responseStatusCode"], "application/json", json.dumps(yomitan_response))
+        send_response(self, yomitan_response["responseStatusCode"], "application/json", json.dumps(yomitan_response["data"]))
 
 try:
     ensure_single_instance()
