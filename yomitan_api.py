@@ -84,7 +84,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             send_response(self, 400, "", "")
             return
 
-        if path in ["remoteVersion", ""]:
+        if path in ["serverVersion", ""]:
             send_response(self, 200, "application/json", json.dumps({"version": YOMITAN_API_NATIVE_MESSAGING_VERSION}))
             return
 
