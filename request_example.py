@@ -22,7 +22,7 @@ def term_entries() -> None:
     }
     response = requests.post(request_url + "/termEntries", json = params, timeout = request_timeout)
     print(response)
-    print(elide(response.text))
+    print(response.text)
 
 def kanji_entries() -> None:
     print("Requesting kanjiEntries:")

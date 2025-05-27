@@ -2,97 +2,12 @@
 
 ## API Paths
 
-### `serverVersion`
+- [/serverVersion](./docs/api_paths/serverVersion.md)
 
-Returns the version of the native messaging component.
+- [/yomitanVersion](./docs/api_paths/yomitanVersion.md)
 
-#### Request
+- [/termEntries](./docs/api_paths/termEntries.md)
 
-- Request method: `POST`
+- [/kanjiEntries](./docs/api_paths/kanjiEntries.md)
 
-#### Response Example (200)
-
-```json
-{
-    "version": 1
-}
-```
-
-### `yomitanVersion`
-
-Returns Yomitan's version.
-
-#### Request
-
-- Request method: `POST`
-
-#### Response Example (200)
-
-```json
-{
-    "version": "0.0.0.0"
-}
-```
-
-### `termEntries`
-
-Returns term dictionary entries for search text as they are represented internally by Yomitan.
-
-#### Request
-
-- Request method: `POST`
-
-- Body: 
-    ```json
-    {
-
-    }
-    ```
-
-#### Response Example (200)
-
-```json
-
-```
-
-### `kanjiEntries`
-
-Returns kanji dictionary entries for search text as they are represented internally by Yomitan.
-
-#### Request
-
-- Request method: `POST`
-
-- Body: 
-    ```json
-    {
-
-    }
-    ```
-
-#### Response Example (200)
-
-```json
-
-```
-
-### `/ankiFields`
-
-Returns rendered Anki handlebars for a 
-
-#### Request
-
-- Request method: `POST`
-
-- Body: 
-    ```json
-    {
-
-    }
-    ```
-
-#### Response Example (200)
-
-```json
-
-```
+- [/ankiFields](./docs/api_paths/ankiFields.md)
