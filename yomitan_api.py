@@ -1,15 +1,15 @@
 #!/usr/bin/env -S python3 -u
 
+import datetime
 import http.server
-import urllib
-import sys
 import json
-import struct
 import os
 import signal
+import struct
+import sys
 import time
 import traceback
-import datetime
+import urllib
 
 ADDR = "127.0.0.1"
 PORT = 8766
@@ -29,7 +29,7 @@ def error_log(message: str, error: str = "") -> None:
         # This exception cannot be "last resort" printed due to stdout being used for nativemessaging
         pass
 
-def ensure_single_instance():
+def ensure_single_instance() -> None:
     wait_time = 0
     try:
         with open(crowbarfile_path, "r") as crowbarfile:
@@ -43,38 +43,38 @@ def ensure_single_instance():
 
     time.sleep(wait_time)
 
-def delete_crowbarfile():
+def delete_crowbarfile() -> None:
     os.remove(crowbarfile_path)
 
-def get_message():
+def get_message() -> dict:
     raw_length = sys.stdin.buffer.read(4)
     if not raw_length:
         return None
-    message_length = struct.unpack('@I', raw_length)[0]
-    message = sys.stdin.buffer.read(message_length).decode('utf-8')
+    message_length = struct.unpack("@I", raw_length)[0]
+    message = sys.stdin.buffer.read(message_length).decode("utf-8")
     return json.loads(message)
 
-def send_message(message_content):
-    encoded_content = json.dumps(message_content).encode('utf-8')
-    encoded_length = struct.pack('@I', len(encoded_content))
+def send_message(message_content: dict) -> None:
+    encoded_content = json.dumps(message_content).encode("utf-8")
+    encoded_length = struct.pack("@I", len(encoded_content))
     sys.stdout.buffer.write(encoded_length)
     sys.stdout.buffer.write(encoded_content)
     sys.stdout.buffer.flush()
 
 class RequestHandler(http.server.BaseHTTPRequestHandler):
-    def do_POST(self):
+    def do_POST(self) -> None:  # noqa: N802
         parsed_url = urllib.parse.urlparse(self.path)
         path = parsed_url.path[1:]
         params = urllib.parse.parse_qs(parsed_url.query)
-        content_length = int(self.headers['Content-Length'])
-        body = self.rfile.read(content_length).decode('utf-8')
+        content_length = int(self.headers["Content-Length"])
+        body = self.rfile.read(content_length).decode("utf-8")
 
         if path in BLACKLISTED_PATHS:
             self.send_response(400)
             self.end_headers()
             return
 
-        send_message({'action': path, 'params': params, 'body': body})
+        send_message({"action": path, "params": params, "body": body})
 
         yomitan_response = get_message()
 
