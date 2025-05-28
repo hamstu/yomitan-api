@@ -19,8 +19,13 @@ ignore = [
     "PTH107", #Checks for uses of `os.remove`.
     "D102", #Checks for undocumented public method definitions.
     "UP015", #Checks for redundant `open` mode arguments.
+    "PTH118", #Checks for uses of `os.path.join`.
+    "PTH111", #Checks for uses of `os.path.expanduser`.
 ]
 [lint.per-file-ignores]
 "request_example.py" = [
+    "T201", #Checks for `print` statements.
+]
+"install_yomitan_api.py" = [
     "T201", #Checks for `print` statements.
 ]
