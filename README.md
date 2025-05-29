@@ -16,7 +16,7 @@
 
 3. Run `python install_yomitan_api.py` and follow the prompts.
 
-    **If you use Firefox or have built Yomitan from source, please refer to the [How to find your extension ID](README.md#-how-to-find-your-extension-id) section below.**
+    **If you use Firefox or have built Yomitan from source, please refer to the [How to find your extension ID](#how-to-find-your-extension-id) section below.**
 
 4. Go to the Yomitan settings page on your browser.
 
