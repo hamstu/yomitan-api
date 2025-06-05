@@ -6,7 +6,7 @@
 
     - Windows: https://www.python.org/downloads/
 
-        **On the first path of the installer, make sure to check `Add Python 3.x to PATH`.**
+        **On the first page of the installer, make sure to check `Add Python 3.x to PATH`.**
 
     - Mac: Install [Homebrew](https://brew.sh/) and run `brew install python3`.
 
