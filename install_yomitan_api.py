@@ -167,7 +167,7 @@ if platform_data["platform"] == "mac":
     script_path = os.path.join(manifest_install_data["path"], "yomitan_api.py")
     try:
         shutil.copy(os.path.join(DIR, "yomitan_api.py"), script_path)
-        print(f"File copied from {os.path.join(DIR, "yomitan_api.py")} to {script_path}")
+        print(f'File copied from {os.path.join(DIR, "yomitan_api.py")} to {script_path}')
     except FileNotFoundError:
         print("File not found.")
     except PermissionError:
