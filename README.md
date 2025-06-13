@@ -24,7 +24,7 @@
 
 6. Go to `General` and enable `Enable Yomitan API`.
 
-7. Click `More...` and click the `Test` button to see if MeCab was installed correctly. You may need to wait a few seconds after enabling the setting for the native messaging component to start up.
+7. Click `More...` and click the `Test` button to see if the Yomitan API was installed correctly. You may need to wait a few seconds after enabling the setting for the native messaging component to start up.
 
 ## How to find your extension ID
 
