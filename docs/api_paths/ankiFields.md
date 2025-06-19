@@ -14,6 +14,10 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
 
     - `markers` (`array<string>`): The markers (often called handlebars) to return. Do not include handlebars brackets (`{}`).
 
+        A list of available handlebars can be found in Yomitan's settings. Open the settings, navigate to the `Anki` category, open `Configure Anki flashcards…`, and click `Help`.
+
+        The Yomitan Wiki also has a list on the [Anki page](https://yomitan.wiki/anki/) under `Markers for Term Cards` or `Markers for Kanji Cards`.
+
     - `maxEntries` (`int`): The number of search entries to render markers for.
 
 ## Request Example
