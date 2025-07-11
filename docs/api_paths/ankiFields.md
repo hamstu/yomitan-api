@@ -1,5 +1,8 @@
 # `ankiFields`
 
+> [!WARNING]
+> This API path is likely to have breaking changes soon.
+
 Returns rendered Anki handlebars for dictionary entries found for search text.
 
 ## Request Options
