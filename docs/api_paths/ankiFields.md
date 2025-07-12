@@ -63,6 +63,13 @@ Glossary has been truncated in this example.
             "content": "iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE...",
             "ankiFilename": "yomitan_dictionary_media_0_2025-06-12-02-45-04-307.png"
         }
+    ],
+    "audioMedia": [
+        {
+            "term": "分かる",
+            "reading": "わかる",
+            "mediaType": "audio/mpeg",
+            "content": "//OExAAAAAAAAAAAAFhpbmcAAAAPAAAAIQAACLgA...", "ankiFilename": "yomitan_audio_2025-06-12-04-12-35-107.mp3"}
     ]
 }
 ```
