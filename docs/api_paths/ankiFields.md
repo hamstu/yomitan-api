@@ -1,8 +1,5 @@
 # `ankiFields`
 
-> [!WARNING]
-> This API path is likely to have breaking changes soon.
-
 Returns rendered Anki handlebars for dictionary entries found for search text.
 
 ## Request Options
@@ -23,6 +20,8 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
 
     - `maxEntries` (`int`): The number of search entries to render markers for.
 
+    - `includeMedia` (`bool`): Whether to return data such as images and audio.
+
 ## Request Example
 
 - Request method: `POST`
@@ -33,7 +32,8 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
         "text": "わかる",
         "type": "term",
         "markers": ["expression", "glossary"],
-        "maxEntries": 2
+        "maxEntries": 2,
+        "includeMedia": true
     }
     ```
 
@@ -42,14 +42,27 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
 Glossary has been truncated in this example.
 
 ```json
-[
-    {
-        "expression": "分かる",
-        "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"..."
-    },
-    {
-        "expression": "解る",
-        "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"..."
-    }
-]
+{
+    "fields": [
+        {
+            "expression": "分かる",
+            "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"..."
+        },
+        {
+            "expression": "解る",
+            "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"..."
+        }
+    ],
+    "dictionaryMedia": [
+        {
+            "dictionary": "Example Dictionary",
+            "path": "assets/dictionary-logo.png",
+            "mediaType": "image/png",
+            "width": 180,
+            "height": 180,
+            "content": "iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE...",
+            "ankiFilename": "yomitan_dictionary_media_0_2025-06-12-02-45-04-307.png"
+        }
+    ]
+}
 ```
