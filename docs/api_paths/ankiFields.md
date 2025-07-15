@@ -31,7 +31,7 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
     {
         "text": "わかる",
         "type": "term",
-        "markers": ["expression", "glossary"],
+        "markers": ["expression", "glossary", "audio"],
         "maxEntries": 2,
         "includeMedia": true
     }
@@ -48,11 +48,13 @@ Media content is provided in base64 encoding.
     "fields": [
         {
             "expression": "分かる",
-            "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"..."
+            "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"...",
+            "audio": "[sound:yomitan_audio_2025-06-12-04-12-35-107.mp3]"
         },
         {
             "expression": "解る",
-            "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"..."
+            "glossary": "<div style=\"text-align: left;\" class=\"yomitan-glossary\"><i>(priority form, ★, Jitendex.org [2025-05-13])</i> <span><ul style=\"list-style-type:&quot;＊&quot;\" lang=\"ja\"><li><span title=\"Godan verb with 'ru' ending\"...",
+            "audio": "[sound:yomitan_audio_2025-06-12-04-12-35-107.mp3]"
         }
     ],
     "dictionaryMedia": [
