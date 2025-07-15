@@ -73,7 +73,9 @@ Media content is provided in base64 encoding.
             "term": "分かる",
             "reading": "わかる",
             "mediaType": "audio/mpeg",
-            "content": "//OExAAAAAAAAAAAAFhpbmcAAAAPAAAAIQAACLgA...", "ankiFilename": "yomitan_audio_2025-06-12-04-12-35-107.mp3"}
+            "content": "//OExAAAAAAAAAAAAFhpbmcAAAAPAAAAIQAACLgA...",
+            "ankiFilename": "yomitan_audio_2025-06-12-04-12-35-107.mp3"
+        }
     ]
 }
 ```
