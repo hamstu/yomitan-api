@@ -41,6 +41,8 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
 
 Glossary and media content have been truncated in this example.
 
+Media content is provided in base64 encoding.
+
 ```json
 {
     "fields": [
