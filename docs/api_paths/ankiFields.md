@@ -39,7 +39,7 @@ Returns rendered Anki handlebars for dictionary entries found for search text.
 
 ## Response Example (200)
 
-Glossary has been truncated in this example.
+Glossary and media content have been truncated in this example.
 
 ```json
 {
