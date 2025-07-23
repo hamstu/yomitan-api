@@ -22,7 +22,7 @@
 
 5. Enable advanced options by clicking the toggle switch in the bottom left corner.
 
-6. Go to `General` and enable `Enable Yomitan API`.
+6. Go to `General` and enable `Enable Yomitan API`. Yomitan will automatically start the API every time you open your browser when this setting is enabled.
 
 7. Click `More...` and click the `Test` button to see if the Yomitan API was installed correctly. You may need to wait a few seconds after enabling the setting for the native messaging component to start up.
 
