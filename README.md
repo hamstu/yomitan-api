@@ -14,7 +14,7 @@
 
 2. [Download](https://github.com/Kuuuube/yomitan-api/archive/master.zip) and extract this repository to the location you wish to install the files.
 
-3. Run `python install_yomitan_api.py` and follow the prompts.
+3. Run `python install_yomitan_api.py` and follow the prompts. If you do not see any errors, it has successfully installed.
 
     **If you use Firefox or have built Yomitan from source, please refer to the [How to find your extension ID](#how-to-find-your-extension-id) section below.**
 
