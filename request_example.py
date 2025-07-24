@@ -1,6 +1,6 @@
 import requests
 
-request_url = "http://127.0.0.1:8766"
+request_url = "http://127.0.0.1:19633"
 request_timeout = 10
 
 def elide(text: str) -> str:
