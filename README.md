@@ -70,6 +70,8 @@ By default, the api is hosted on `http://127.0.0.1:19633`. To change this, edit 
 
 - [/ankiFields](./docs/api_paths/ankiFields.md)
 
+- [/tokenize](./docs/api_paths/tokenize.md)
+
 ## Examples
 
 [Yomitan API Request Example Python](./request_example.py)

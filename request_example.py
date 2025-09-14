@@ -59,6 +59,16 @@ def anki_fields_kanji() -> None:
     print(response)
     print(elide(response.text))
 
+def tokenize() -> None:
+    print("Requesting tokenize:")
+    params = {
+        "text": "自民党の総裁選挙",
+        "scanLength": 10,
+    }
+    response = requests.post(request_url + "/tokenize", json = params, timeout = request_timeout)
+    print(response)
+    print(elide(response.text))
+
 print("Yomitan API request example demo")
 print("Only the first 100 characters of the result data for each request will be printed")
 print("--------------------------------------------------")
@@ -67,3 +77,4 @@ term_entries()
 kanji_entries()
 anki_fields_term()
 anki_fields_kanji()
+tokenize()
